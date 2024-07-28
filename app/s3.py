@@ -15,7 +15,7 @@ def upload_file_to_s3_with_object_lock(bucket_name, file_path, object_key):
             Bucket=bucket_name,
             Key=object_key,
             Retention={
-                'Mode': 'GOVERNANCE',  # or 'COMPLIANCE'
+                'Mode': 'COMPLIANCE',
                 'RetainUntilDate': (datetime.datetime.now() + datetime.timedelta(days=1)).isoformat()
             }
         )
@@ -30,8 +30,9 @@ def upload_file_to_s3_with_object_lock(bucket_name, file_path, object_key):
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    bucket_name = 'arquivosgerais'
-    file_path = './teste.txt'
-    object_key = 'teste.txt'
+    bucket_name = 'arquivosgeraispaulo'
+    file_path = './teste2.txt'
+    object_key = 'teste2.txt'
 
+    upload_file_to_s3_with_object_lock(bucket_name, file_path, object_key)
     upload_file_to_s3_with_object_lock(bucket_name, file_path, object_key)
